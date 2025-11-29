@@ -1,6 +1,7 @@
 package com.upc.cubegridlab.controllers;
 
 import com.upc.cubegridlab.dtos.ProyectoDTO;
+import com.upc.cubegridlab.dtos.ReporteDTO;
 import com.upc.cubegridlab.dtos.SimulacionDTO;
 import com.upc.cubegridlab.dtos.SimulacionDTO2;
 import com.upc.cubegridlab.interfaces.ISimulacion;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true", exposedHeaders = "Authorization")
 @RequestMapping("/api/simulacion")
 public class SimulacionController {
     @Autowired
@@ -43,5 +45,12 @@ public class SimulacionController {
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public SimulacionDTO2 buscarSimulacionPorCodigoProyecto(@PathVariable Integer codigoProyecto){
         return simulacion.buscarSimulacionPorCodigoProyecto(codigoProyecto);
+    }
+
+    @GetMapping("/reporte/{codigoUsuario}")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public ResponseEntity<ReporteDTO> obtenerPromedios(@PathVariable Integer codigoUsuario) {
+        ReporteDTO reporte = simulacion.obtenerPromediosPorUsuario(codigoUsuario);
+        return ResponseEntity.ok(reporte);
     }
 }

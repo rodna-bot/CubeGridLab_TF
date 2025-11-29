@@ -1,5 +1,6 @@
 package com.upc.cubegridlab.repositorios;
 
+import com.upc.cubegridlab.dtos.ReporteDTO;
 import com.upc.cubegridlab.dtos.SimulacionDTO2;
 import com.upc.cubegridlab.entidades.Simulacion;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -37,4 +38,11 @@ public interface SimulacionRepositorio extends JpaRepository<Simulacion,Integer>
             "FROM Simulacion s " +
             "WHERE s.proyecto.codigo = :codigoProyecto")
     public SimulacionDTO2 findSimulacionByProyectoCodigo(@Param("codigoProyecto") Integer codigoProyecto);
+
+    //Reporte Promedio de costo, peso y consumo por usuario
+    @Query("SELECT new com.upc.cubegridlab.dtos.ReporteDTO(" +
+            "AVG(s.costoTotal), AVG(s.pesoTotal), AVG(s.consumoTotal)) " +
+            "FROM Simulacion s " +
+            "WHERE s.proyecto.usuarioCurso.usuario.codigo = :codigoUsuario")
+    ReporteDTO obtenerPromediosPorUsuario(@Param("codigoUsuario") Integer codigoUsuario);
 }

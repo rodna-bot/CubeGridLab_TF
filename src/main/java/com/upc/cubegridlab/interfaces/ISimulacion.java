@@ -1,6 +1,7 @@
 package com.upc.cubegridlab.interfaces;
 
 import com.upc.cubegridlab.dtos.ProyectoDTO;
+import com.upc.cubegridlab.dtos.ReporteDTO;
 import com.upc.cubegridlab.dtos.SimulacionDTO;
 import com.upc.cubegridlab.dtos.SimulacionDTO2;
 
@@ -12,4 +13,5 @@ public interface ISimulacion {
     public void eliminar(Integer id);
     public List<SimulacionDTO> listar();
     public SimulacionDTO2 buscarSimulacionPorCodigoProyecto(Integer codigoProyecto);
+    public ReporteDTO obtenerPromediosPorUsuario(Integer codigoUsuario);
 }

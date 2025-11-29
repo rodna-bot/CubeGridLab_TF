@@ -10,3 +10,11 @@ INSERT INTO cursos (nombre, descripcion) VALUES ('Curso nivel principiante', 'Cu
 INSERT INTO cursos (nombre, descripcion) VALUES ('Curso nivel intermedio', 'Curso dirigido a quienes ya tienen conocimientos básicos y desean profundizar sus habilidades.');
 INSERT INTO cursos (nombre, descripcion) VALUES ('Curso nivel avanzado', 'Curso diseñado para estudiantes con conocimientos previos que buscan dominar técnicas avanzadas y complejas en la materia.');
 
+--Insertando nanosatelites
+INSERT INTO nanosatelites (tipo, precio) VALUES ('NanoSat', 100);
+INSERT INTO nanosatelites (tipo, precio) VALUES('CubeSat', 500);
+
+--Insertando componentes
+INSERT INTO componentes (nombre, descripcion, tipo, precio, peso, consumo) VALUES ('Transceptor de Comunicaciones', 'Dispositivo para enviar y recibir datos con la estación terrestre', 'Comunicaciones', 300, 40, 30);
+INSERT INTO componentes (nombre, descripcion, tipo, precio, peso, consumo) VALUES ('Cámara Espacial', 'Cámara de alta resolución para observación terrestre', 'Instrumento', 400, 5, 50);
+INSERT INTO componentes (nombre, descripcion, tipo, precio, peso, consumo) VALUES ('Panel Solar', 'Panel solar para alimentar el nanosatélite', 'Energía', 200, 20, 5);
