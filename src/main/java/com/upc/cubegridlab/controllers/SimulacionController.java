@@ -2,6 +2,7 @@ package com.upc.cubegridlab.controllers;
 
 import com.upc.cubegridlab.dtos.ProyectoDTO;
 import com.upc.cubegridlab.dtos.SimulacionDTO;
+import com.upc.cubegridlab.dtos.SimulacionDTO2;
 import com.upc.cubegridlab.interfaces.ISimulacion;
 import com.upc.cubegridlab.service.SimulacionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,4 +39,9 @@ public class SimulacionController {
         return simulacion.listar();
     }
 
+    @GetMapping("/buscar/{codigoProyecto}")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public SimulacionDTO2 buscarSimulacionPorCodigoProyecto(@PathVariable Integer codigoProyecto){
+        return simulacion.buscarSimulacionPorCodigoProyecto(codigoProyecto);
+    }
 }

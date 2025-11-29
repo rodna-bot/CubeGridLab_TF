@@ -2,6 +2,7 @@ package com.upc.cubegridlab.service;
 
 import com.upc.cubegridlab.dtos.ProyectoDTO;
 import com.upc.cubegridlab.dtos.SimulacionDTO;
+import com.upc.cubegridlab.dtos.SimulacionDTO2;
 import com.upc.cubegridlab.entidades.Proyecto;
 import com.upc.cubegridlab.entidades.Simulacion;
 import com.upc.cubegridlab.interfaces.ISimulacion;
@@ -85,5 +86,10 @@ public class SimulacionService implements ISimulacion {
         return simulacionRepositorio.findAll().stream()
                 .map(simulacion->modelMapper.map(simulacion, SimulacionDTO.class))
                 .toList();
+    }
+
+    @Override
+    public SimulacionDTO2 buscarSimulacionPorCodigoProyecto(Integer codigoProyecto) {
+        return simulacionRepositorio.findSimulacionByProyectoCodigo(codigoProyecto);
     }
 }

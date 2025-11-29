@@ -1,11 +1,13 @@
 package com.upc.cubegridlab.repositorios;
 
+import com.upc.cubegridlab.dtos.SimulacionDTO2;
 import com.upc.cubegridlab.entidades.Simulacion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 public interface SimulacionRepositorio extends JpaRepository<Simulacion,Integer> {
     @Query(value = "SELECT (n.precio + COALESCE(SUM(c.precio), 0))" +
@@ -29,4 +31,10 @@ public interface SimulacionRepositorio extends JpaRepository<Simulacion,Integer>
             "JOIN p.componentes c " +
             "WHERE s.codigo = :codigoSimulacion")
     BigDecimal calcularConsumoTotal(@Param("codigoSimulacion") Integer codigoSimulacion);
+
+    @Query("SELECT new com.upc.cubegridlab.dtos.SimulacionDTO2(" +
+            "s.codigo, s.nombre, s.fechaCreacion, s.costoTotal, s.pesoTotal, s.consumoTotal) " +
+            "FROM Simulacion s " +
+            "WHERE s.proyecto.codigo = :codigoProyecto")
+    public SimulacionDTO2 findSimulacionByProyectoCodigo(@Param("codigoProyecto") Integer codigoProyecto);
 }
