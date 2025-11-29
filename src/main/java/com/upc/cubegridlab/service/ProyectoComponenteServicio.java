@@ -77,4 +77,5 @@ public class ProyectoComponenteServicio implements IProyectoComponente {
                 .map(proyecto -> modelMapper.map(proyecto, ProyectoDTO.class))
                 .collect(Collectors.toList());
     }
+
 }

@@ -18,7 +18,7 @@ public class NanosateliteController {
     INanosatelite service;
 
     @GetMapping("/listar")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public List<NanosateliteDTO> listar(){ return service.listar(); }
 
     @PostMapping("/registrar")

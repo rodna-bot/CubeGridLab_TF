@@ -41,7 +41,8 @@ public class Proyecto {
     @JoinColumn(name = "codigo_nanosatelite", nullable = true)
     private Nanosatelite nanosatelite;
 
-    @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //@ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany (fetch = FetchType.LAZY)
     @JoinTable(
             name = "proyectos_componentes",
             joinColumns = @JoinColumn(name = "codigo_proyecto"),

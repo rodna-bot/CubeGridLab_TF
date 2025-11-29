@@ -19,7 +19,6 @@ import java.util.List;
 @AllArgsConstructor
 public class ProyectoDTO {
     private Integer codigo;
-
     private String nombre;
     private String descripcion;
 

@@ -32,10 +32,21 @@ public class ProyectoController {
     public void eliminarProyecto(@PathVariable Integer id){
         proyecto.eliminar(id);
     }
+
     @GetMapping("/listar")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public List<ProyectoDTO> listar(){
         return proyecto.listar();
+    }
+    @GetMapping("/id/{id}")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public ProyectoDTO buscarporId (@PathVariable Integer id){
+        return proyecto.buscarPorId(id);
+    }
+    @GetMapping("/listar/user/{id}")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public List<ProyectoDTO> listarPorUsuario(@PathVariable Integer id){
+        return proyecto.listarPorUsuario(id);
     }
 
 }

@@ -14,7 +14,6 @@ import java.util.List;
 public class ProyectoComponenteController {
     @Autowired
     IProyectoComponente proyectoComponente;
-
     @GetMapping("/listar")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public List<ProyectoDTO> listar(){ return proyectoComponente.listar(); }

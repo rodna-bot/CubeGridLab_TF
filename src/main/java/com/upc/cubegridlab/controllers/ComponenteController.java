@@ -17,15 +17,10 @@ public class ComponenteController {
     @Autowired
     IComponente componente;
 
-    @GetMapping("/listar")
-    @PreAuthorize("hasAnyRole('ADMIN')")
-    public List<ComponenteDTO> listar(){ return componente.listar(); }
-
     @PostMapping("/registrar")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ComponenteDTO> crear(@RequestBody ComponenteDTO dto){
-        return ResponseEntity.status(HttpStatus.CREATED).body(componente.registrar(dto));
-    }
+        return ResponseEntity.status(HttpStatus.CREATED).body(componente.registrar(dto));}
 
     @PutMapping("/actualizar")
     @PreAuthorize("hasRole('ADMIN')")
@@ -39,4 +34,7 @@ public class ComponenteController {
         componente.eliminar(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/listar")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    public List<ComponenteDTO> listar(){ return componente.listar(); }
 }

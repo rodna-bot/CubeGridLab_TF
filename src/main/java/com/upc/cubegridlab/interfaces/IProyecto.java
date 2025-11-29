@@ -10,4 +10,6 @@ public interface IProyecto {
     public ProyectoDTO actualizar(ProyectoDTO proyecto);
     public void eliminar(Integer id);
     public List<ProyectoDTO> listar();
+    public ProyectoDTO buscarPorId(Integer id);
+    public List<ProyectoDTO> listarPorUsuario(Integer id);
 }
